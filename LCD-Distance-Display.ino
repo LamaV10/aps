@@ -26,20 +26,19 @@ void loop() {
   delay(10);
   digitalWrite(trigger, LOW);
   duration = pulseIn(echo, HIGH);
-  // distance in cm
-  distance = (duration/2) * 0.03434;
+  distance = (duration/2) * 0.03434; // distance in cm
 
   lcd.setCursor(0, 0);
-  lcd.print(distance);
+  lcd.print(distance); // print the distance
 
   lcd.setCursor(0, 1);
-  lcd.print("----------------");
+  lcd.print("----------------"); // write the whole row
   lcd.setCursor(15, 1);
 
   for(int i = 0; i < distance; i += 2){
-    lcd.print(" ");
-    lcd.setCursor(15 - i / 2, 1);
+    lcd.print(" "); // delete the "-" string from the right
+    lcd.setCursor(15 - i / 2, 1); // positions cursor one to the left for the next potential deletion
   }
-  delay(150);
+  delay(150); // stops to intense display flickering 
   lcd.clear();
 }
