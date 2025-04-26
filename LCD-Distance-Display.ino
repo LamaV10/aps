@@ -29,7 +29,11 @@ void loop() {
   distance = (duration/2) * 0.03434; // distance in cm
 
   lcd.setCursor(0, 0);
+  lcd.print("Distance: "); // print the distance
+  lcd.setCursor(10, 0);
   lcd.print(distance); // print the distance
+  lcd.setCursor(12, 0);
+  lcd.print("cm"); // print the unit of the distance 
 
   lcd.setCursor(0, 1);
   lcd.print("----------------"); // write the whole row
