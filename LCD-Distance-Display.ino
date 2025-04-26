@@ -29,44 +29,17 @@ void loop() {
   // distance in cm
   distance = (duration/2) * 0.03434;
 
-  lcd.setCursor(1, 0);
+  lcd.setCursor(0, 0);
   lcd.print(distance);
 
-  lcd.setCursor(2, 1);
+  lcd.setCursor(0, 1);
+  lcd.print("----------------");
+  lcd.setCursor(15, 1);
+
+  for(int i = 0; i < distance; i += 2){
+    lcd.print(" ");
+    lcd.setCursor(15 - i / 2, 1);
+  }
+  delay(150);
   lcd.clear();
-  if(distance < 2){
-    lcd.print("----------------");
-  } else if(distance < 4){
-    lcd.print("---------------");
-  } else if(distance < 6){
-    lcd.print("--------------");
-  } else if(distance < 8){
-    lcd.print("-------------");
-  } else if(distance < 10){
-    lcd.print("------------");
-  } else if(distance < 12){
-    lcd.print("-----------");
-  } else if(distance < 14){
-    lcd.print("----------");
-  } else if(distance < 16){
-    lcd.print("---------");
-  } else if(distance < 18){
-    lcd.print("---------");
-  } else if(distance < 20){
-    lcd.print("--------");
-  } else if(distance < 22){
-    lcd.print("-------");
-  } else if(distance < 24){
-    lcd.print("------");
-  } else if(distance < 26){
-    lcd.print("-----");
-  } else if(distance < 28){
-    lcd.print("----");
-  } else if(distance < 30){
-    lcd.print("---");
-  } else if(distance < 32){
-    lcd.print("--");
-  } else if(distance < 34){
-    lcd.print("-");
-}
 }
