@@ -1,4 +1,3 @@
-// Include the library:
 #include "LiquidCrystal.h"
 #define trigger 13
 #define echo 12
@@ -10,11 +9,11 @@ int distance;
 LiquidCrystal lcd = LiquidCrystal(2, 3, 4, 5, 6, 7);
 
 void setup() {
-  // Specify the LCD's number of columns and rows. Change to (20, 4) for a 20x4 LCD:
+  Serial.begin(9600);
+  // Specify the LCD's number of columns and rows:
   lcd.begin(16, 2);
 
-  // ultrasound sensor
-  Serial.begin(9600);
+  // ultrasonic-sensor
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
 }
@@ -29,14 +28,14 @@ void loop() {
   distance = (duration/2) * 0.03434; // distance in cm
 
   lcd.setCursor(0, 0);
-  lcd.print("Distance: "); // print the distance
+  lcd.print("Distance: ");
   lcd.setCursor(10, 0);
   lcd.print(distance); // print the distance
   lcd.setCursor(12, 0);
   lcd.print("cm"); // print the unit of the distance 
 
   lcd.setCursor(0, 1);
-  lcd.print("----------------"); // write the whole row
+  lcd.print("----------------"); // write the whole row full with "-" 
   lcd.setCursor(15, 1);
 
   for(int i = 0; i < distance; i += 2){
