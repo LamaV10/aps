@@ -33,7 +33,7 @@ void loop() {
   lcd.print("cm"); // print the unit of the distance 
  
   if(distance > 0){
-    delay(150); // stops to intense display flickering 
+    delay(200); // stops to intense display flickering 
     lcd.clear();
 
     lcd.setCursor(10, 0);
