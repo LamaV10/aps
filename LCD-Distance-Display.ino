@@ -31,8 +31,11 @@ void loop() {
   lcd.print("Distance: ");
   lcd.setCursor(12, 0);
   lcd.print("cm"); // print the unit of the distance 
-
+ 
   if(distance > 0){
+    delay(150); // stops to intense display flickering 
+    lcd.clear();
+
     lcd.setCursor(10, 0);
     lcd.print(distance); // print the distance
 
@@ -44,7 +47,5 @@ void loop() {
       lcd.print(" "); // delete the "-" string from the right
       lcd.setCursor(15 - i / 2, 1); // positions cursor one to the left for the next potential deletion
     }
-    delay(150); // stops to intense display flickering 
-    lcd.clear();
   }
 }
