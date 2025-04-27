@@ -29,19 +29,22 @@ void loop() {
 
   lcd.setCursor(0, 0);
   lcd.print("Distance: ");
-  lcd.setCursor(10, 0);
-  lcd.print(distance); // print the distance
   lcd.setCursor(12, 0);
   lcd.print("cm"); // print the unit of the distance 
 
-  lcd.setCursor(0, 1);
-  lcd.print("----------------"); // write the whole row full with "-" 
-  lcd.setCursor(15, 1);
+  if(distance > 0){
+    lcd.setCursor(10, 0);
+    lcd.print(distance); // print the distance
 
-  for(int i = 0; i < distance; i += 2){
-    lcd.print(" "); // delete the "-" string from the right
-    lcd.setCursor(15 - i / 2, 1); // positions cursor one to the left for the next potential deletion
+    lcd.setCursor(0, 1);
+    lcd.print("----------------"); // write the whole row full with "-" 
+    lcd.setCursor(15, 1);
+
+    for(int i = 0; i < distance; i += 2){
+      lcd.print(" "); // delete the "-" string from the right
+      lcd.setCursor(15 - i / 2, 1); // positions cursor one to the left for the next potential deletion
+    }
+    delay(150); // stops to intense display flickering 
+    lcd.clear();
   }
-  delay(150); // stops to intense display flickering 
-  lcd.clear();
 }
