@@ -31,7 +31,7 @@ void loop() {
   if(distance > 0){
     lcd.clear();
 
-    lcd.home(); // goto 0, 0
+    lcd.home(); // go to 0, 0
     lcd.print("Distance: ");
     lcd.setCursor(12, 0);
     lcd.print("cm"); // print the unit of the distance 
@@ -40,7 +40,6 @@ void loop() {
     lcd.print(distance); // print the distance
 
     lcd.setCursor(0, 1);
-    // lcd.print("----------------"); // write the whole row full with "-" 
     lcd.print(">>>>>>>>>>>>>>>>"); // write the whole row full with "-" 
     lcd.setCursor(15, 1);
 
