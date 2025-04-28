@@ -17,7 +17,6 @@ void setup() {
   // ultrasonic-sensor
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
-
 }
 
 void loop() {
@@ -41,15 +40,15 @@ void loop() {
       lcd.setCursor(10, 0);
       lcd.print(distance); // print the distance
       printDelay = 0;
+      // deletes the second column, if the number is only one column long
+      if(distance < 10){
+        lcd.setCursor(11, 0);
+        lcd.print(" ");
+      }
     } else {
       printDelay++;
     }
 
-    // deletes the second column, if the number is only one column long
-    if(distance < 10){
-      lcd.setCursor(11, 0);
-      lcd.print(" ");
-    }
 
     // printing the distance symbols
     lcd.setCursor(0, 1);
