@@ -44,11 +44,13 @@ void loop() {
       if(distance < 10){
         lcd.setCursor(11, 0);
         lcd.print(" ");
+      } else if(distance < 100){
+        lcd.setCursor(12, 0);
+        lcd.print(" ");
       }
     } else {
       printDelay++;
     }
-
 
     // printing the distance symbols
     lcd.setCursor(0, 1);
