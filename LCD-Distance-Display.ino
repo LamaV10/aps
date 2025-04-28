@@ -17,6 +17,11 @@ void setup() {
   // ultrasonic-sensor
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
+
+  lcd.home(); // go to 0, 0
+  lcd.print("Distance: ");
+  lcd.setCursor(12, 0);
+  lcd.print("cm"); // print the unit of the distance 
 }
 
 void loop() {
@@ -28,17 +33,8 @@ void loop() {
   duration = pulseIn(echo, HIGH);
   distance = (duration/2) * 0.03434; // distance in cm
 
-  lcd.home(); // go to 0, 0
-  lcd.print("Distance: ");
-  lcd.setCursor(12, 0);
-  lcd.print("cm"); // print the unit of the distance 
  
   if(distance > 0){
-    // deletes the second column, if the number is only one column long
-    if(distance < 10){
-      lcd.setCursor(11, 0);
-      lcd.print(" ");
-    }
     // a little delay for printing otherwise it's hardly readable
     if(printDelay >= 10){
       lcd.setCursor(10, 0);
@@ -46,6 +42,12 @@ void loop() {
       printDelay = 0;
     } else {
       printDelay++;
+    }
+
+    // deletes the second column, if the number is only one column long
+    if(distance < 10){
+      lcd.setCursor(11, 0);
+      lcd.print(" ");
     }
 
     // printing the distance symbols
