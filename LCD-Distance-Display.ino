@@ -18,10 +18,6 @@ void setup() {
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
 
-  lcd.home(); // go to 0, 0
-  lcd.print("Distance: ");
-  lcd.setCursor(12, 0);
-  lcd.print("cm"); // print the unit of the distance 
 }
 
 void loop() {
@@ -32,9 +28,14 @@ void loop() {
   digitalWrite(trigger, LOW);
   duration = pulseIn(echo, HIGH);
   distance = (duration/2) * 0.03434; // distance in cm
-
  
   if(distance > 0){
+    // print the stationary things
+    lcd.home(); // go to 0, 0
+    lcd.print("Distance: ");
+    lcd.setCursor(12, 0);
+    lcd.print("cm"); // print the unit of the distance 
+  
     // a little delay for printing otherwise it's hardly readable
     if(printDelay >= 10){
       lcd.setCursor(10, 0);
