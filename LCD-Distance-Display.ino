@@ -28,13 +28,12 @@ void loop() {
   duration = pulseIn(echo, HIGH);
   distance = (duration/2) * 0.03434; // distance in cm
 
+  lcd.home(); // go to 0, 0
+  lcd.print("Distance: ");
+  lcd.setCursor(12, 0);
+  lcd.print("cm"); // print the unit of the distance 
  
   if(distance > 0){
-    lcd.home(); // go to 0, 0
-    lcd.print("Distance: ");
-    lcd.setCursor(12, 0);
-    lcd.print("cm"); // print the unit of the distance 
-
     // deletes the second column, if the number is only one column long
     if(distance < 10){
       lcd.setCursor(11, 0);
