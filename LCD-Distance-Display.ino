@@ -32,7 +32,7 @@ void loop() {
     // print the stationary things
     lcd.home(); // go to 0, 0
     lcd.print("Distance: ");
-    lcd.setCursor(12, 0);
+    lcd.setCursor(13, 0);
     lcd.print("cm"); // print the unit of the distance 
   
     // a little delay for printing otherwise it's hardly readable
