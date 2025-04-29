@@ -2,17 +2,16 @@
 #define trigger 13
 #define echo 12
 
-int duration;
+int duration; // time the waves need to come back 
 int distance;
-int printDelay;
+int printDelay; // later used for printing the distance more readable 
 
 // Create an LCD object. Parameters: (RS, E, D4, D5, D6, D7):
 LiquidCrystal lcd = LiquidCrystal(2, 3, 4, 5, 6, 7);
 
 void setup() {
   Serial.begin(9600);
-  // Specify the LCD's number of columns and rows:
-  lcd.begin(16, 2);
+  lcd.begin(16, 2); // Specify the LCD's number of columns and rows
 
   // ultrasonic-sensor
   pinMode(trigger, OUTPUT);
