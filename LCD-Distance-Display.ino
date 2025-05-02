@@ -26,7 +26,7 @@ void loop() {
   digitalWrite(trigger, LOW);
   duration = pulseIn(echo, HIGH);
   distance = (duration/2) * 0.03434; // distance in cm
- 
+
   if(distance > 0){
     // print the stationary things
     lcd.home(); // go to 0, 0
@@ -53,18 +53,13 @@ void loop() {
 
     // printing the distance symbols
     lcd.setCursor(0, 1);
-    char test[17] = ">>>>>>>>>>>>>>>>";
-    // lcd.print(">>>>>>>>>>>>>>>>"); // write the whole row full with "-" 
-    // lcd.print(test); // write the whole row full with "-" 
+    char symbols[17] = ">>>>>>>>>>>>>>>>";
     lcd.setCursor(0, 1);
 
     // delete the symbols according to the distance
     for(int i = 0; i < distance; i += 2){
-      // lcd.print(" "); // delete the "-" string from the right
-      // lcd.setCursor(15 - i / 2, 1); // positions cursor one to the left for the next potential deletion
-      test[15 - i / 2] = "-";
-      // test[0] = " ";
+      symbols[15 - i / 2] = ' '; // positions cursor one to the left for the next potential deletion
     }
-    lcd.print(test);
+    lcd.print(symbols);
   }
 }
