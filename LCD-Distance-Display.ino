@@ -56,9 +56,12 @@ void loop() {
     char symbols[17] = ">>>>>>>>>>>>>>>>";
     lcd.setCursor(0, 1);
 
-    // delete the symbols according to the distance
-    for(int i = 0; i < distance; i += 2){
-      symbols[15 - i / 2] = ' '; // positions cursor one to the left for the next potential deletion
+    if (distance < 2){ // prints the whole array
+      lcd.print(symbols);
+    } else { // shortens the symbols according to the distance
+      for(int i = 0; i < distance; i += 2){
+        symbols[15 - i / 2] = ' '; // positions cursor one to the left for the next potential deletion
+      }
     }
     lcd.print(symbols);
   }
