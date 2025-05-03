@@ -3,7 +3,7 @@
 #define echo 12
 
 int duration; // time the waves need to come back 
-int distance;
+int distance; // distance in cm
 int printDelay; // later used for printing the distance more readable 
 
 // Create an LCD object. Parameters: (RS, E, D4, D5, D6, D7):
@@ -16,6 +16,12 @@ void setup() {
   // ultrasonic-sensor
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
+
+  // print the stationary things
+  lcd.home(); // go to 0, 0
+  lcd.print("Distance: ");
+  lcd.setCursor(13, 0);
+  lcd.print("cm"); // print the unit of the distance 
 }
 
 void loop() {
@@ -25,15 +31,9 @@ void loop() {
   delay(10);
   digitalWrite(trigger, LOW);
   duration = pulseIn(echo, HIGH);
-  distance = (duration/2) * 0.03434; // distance in cm
+  distance = (duration/2) * 0.03434; 
 
   if(distance > 0){
-    // print the stationary things
-    lcd.home(); // go to 0, 0
-    lcd.print("Distance: ");
-    lcd.setCursor(13, 0);
-    lcd.print("cm"); // print the unit of the distance 
-  
     // a little delay for printing otherwise it's hardly readable
     if(printDelay >= 10){
       lcd.setCursor(10, 0);
