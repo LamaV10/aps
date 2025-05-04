@@ -2,9 +2,9 @@
 #define trigger 13
 #define echo 12
 
-int duration; // time the waves need to come back 
+int travelDuration; // time the waves need to come back 
 int distance; // distance in cm
-int printDelay; // later used for printing the distance more readable 
+int TextPrintDelay; // later used for printing the distance more readable 
 
 // Create an LCD object. Parameters: (RS, E, D4, D5, D6, D7):
 LiquidCrystal lcd = LiquidCrystal(2, 3, 4, 5, 6, 7);
@@ -30,15 +30,15 @@ void loop() {
   digitalWrite(trigger, HIGH);
   delay(10);
   digitalWrite(trigger, LOW);
-  duration = pulseIn(echo, HIGH);
-  distance = (duration/2) * 0.03434; 
+  travelDuration = pulseIn(echo, HIGH);
+  distance = (travelDuration/2) * 0.03434; 
 
   if(distance > 0){
     // a little delay for printing otherwise it's hardly readable
-    if(printDelay >= 10){
+    if(TextPrintDelay >= 10){
       lcd.setCursor(10, 0);
       lcd.print(distance); // print the distance
-      printDelay = 0;
+      TextPrintDelay = 0;
       // deletes the second column, if the number is only one column long
       if(distance < 10){
         lcd.setCursor(11, 0);
@@ -48,7 +48,7 @@ void loop() {
         lcd.print(" ");
       }
     } else {
-      printDelay++;
+      TextPrintDelay++;
     }
 
     // printing the distance symbols
