@@ -53,7 +53,7 @@ void loop() {
 
     // printing the distance symbols
     lcd.setCursor(0, 1);
-    char symbols[17] = ">>>>>>>>>>>>>>>>";
+    char symbols[17] = "))))))))))))))))";
     lcd.setCursor(0, 1);
 
     if (distance < 2){ // prints the whole array
