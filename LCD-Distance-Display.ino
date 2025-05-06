@@ -11,12 +11,12 @@ LiquidCrystal lcd = LiquidCrystal(2, 3, 4, 5, 6, 7);
 
 void setup() {
   Serial.begin(9600);
-  lcd.begin(16, 2); // Specify the LCD's number of columns and rows
 
   // ultrasonic-sensor
   pinMode(trigger, OUTPUT);
   pinMode(echo, INPUT);
 
+  lcd.begin(16, 2); // Specify the LCD's number of columns and rows
   // print the stationary things
   lcd.home(); // go to 0, 0
   lcd.print("Distance: ");
@@ -51,10 +51,8 @@ void loop() {
       TextPrintDelay++;
     }
 
-    // printing the distance symbols
-    lcd.setCursor(0, 1);
+    lcd.setCursor(0, 1); // set cursor in the second row
     char symbols[17] = "))))))))))))))))";
-    lcd.setCursor(0, 1);
 
     if (distance < 2){ // prints the whole array
       lcd.print(symbols);
@@ -63,6 +61,6 @@ void loop() {
         symbols[15 - i / 2] = ' '; // positions cursor one to the left for the next potential deletion
       }
     }
-    lcd.print(symbols);
+    lcd.print(symbols); // print the distance symbol
   }
 }
