@@ -43,6 +43,7 @@ void loop() {
       if(distance < 10){
         lcd.setCursor(11, 0);
         lcd.print(" ");
+      // deletes the third column, if the number is only two columns long
       } else if(distance < 100){
         lcd.setCursor(12, 0);
         lcd.print(" ");
